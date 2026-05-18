@@ -1,8 +1,13 @@
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserManager {
+    public User actualUser;
     private static ArrayList<User> userList = new ArrayList<>();
+    public List<User> list(){return userList;}
+
+
     public static int idIterator = 1;
     public void handleRegistration(){
             int id = idIterator;
@@ -64,8 +69,10 @@ public class UserManager {
                 break;
             }
 
+            double balance = 0;
+
             //Create the object
-            User newUser = new User(id, name, pass, card, passTrans);
+            User newUser = new User(id, name, pass, card, passTrans, balance);
 
             //Save in the list
             userList.add(newUser);
@@ -84,6 +91,7 @@ public class UserManager {
         for(User u : userList){
             if(u.getUserName().equals(loginName) && u.getPassword().equals(loginPass)){
                 JOptionPane.showMessageDialog(null, "¡Welcome back " + u.getUserName() + "!");
+                actualUser = u;
                 return u;
             }
             }

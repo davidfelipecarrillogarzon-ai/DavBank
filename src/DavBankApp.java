@@ -3,6 +3,7 @@ import javax.swing.*;
 
 public class DavBankApp {
     private static UserManager userManager = new UserManager();
+    public static functionMenu functionMenu= new functionMenu();
     public static void main(String[] args) {
         while (true) {
             entryMenu();
@@ -19,7 +20,7 @@ public class DavBankApp {
             case 0:
                 User loggedUser = userManager.handleLogin();
                 if(loggedUser != null){
-                    System.out.println("Aqui va la logica cuando se haga el inicio de sesion");
+                    functionMenu.functionMenu(loggedUser);
                 }
                 break;
             case 1:
