@@ -23,4 +23,17 @@ public class User {
         public String getCardNumber(){return  cardNumber;}
         public String getTransactionPassword(){return transactionPassword;}
         public double getBalance(){return balance;}
+
+
+        public void addBalance(double amount){
+                if(amount >0){
+                        this.balance += amount;
+                }
+        }
+        public void subtractBalance(double amount){
+                if(amount >0){
+                        this.balance -= amount;
+                }
+        }
+
 }
