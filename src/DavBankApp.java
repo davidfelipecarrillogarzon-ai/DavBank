@@ -1,9 +1,8 @@
-import java.util.ArrayList;
 import javax.swing.*;
 
 public class DavBankApp {
     private static UserManager userManager = new UserManager();
-    public static functionMenu functionMenu= new functionMenu();
+    public static FunctionMenu functionMenu= new FunctionMenu();
     public static void main(String[] args) {
         while (true) {
             entryMenu();

@@ -10,15 +10,16 @@ public class Security {
             case 0:
                 int attempts = 3;
                 String password = JOptionPane.showInputDialog("Write your password to change it");
-                while(!password.equals(loggedUser.getPassword()));{
+                while(!password.equals(loggedUser.getPassword())){
                 attempts--;
-                password = JOptionPane.showInputDialog("Incorrect password you have now " + attempts + " attempts");
                 if (attempts == 0) return;
+                password = JOptionPane.showInputDialog("Incorrect password you have now " + attempts + " attempts");
+                if(password==null){return;}
             }
                 while (true) {
-                    String newPassword = JOptionPane.showInputDialog("Write your password (more than 8 characters)");//Password for the app
+                    String newPassword = JOptionPane.showInputDialog("Write your new password (more than 8 characters)");//Password for the app
                     if (newPassword == null) {
-                        JOptionPane.showMessageDialog(null, "You canceled the register");
+                        JOptionPane.showMessageDialog(null, "You canceled the change");
                         return;
                     }
 
@@ -28,7 +29,7 @@ public class Security {
                     }
 
                     if (newPassword.length() < 8 || newPassword.length() > 20) {
-                        JOptionPane.showMessageDialog(null, "You password can´t have less than 20 characters and more than 20");
+                        JOptionPane.showMessageDialog(null, "You password can´t have less than 8 characters and more than 20");
                         continue;
                     }
                     loggedUser.setPassword(newPassword);

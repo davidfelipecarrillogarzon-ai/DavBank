@@ -31,15 +31,14 @@ public class UserManager {
                 pass = JOptionPane.showInputDialog("Write your password (more than 8 characters)");//Password for the app
                 if (pass == null) {
                     JOptionPane.showMessageDialog(null, "You canceled the register");
+                    return;
                 }
-
                 if (pass.trim().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Don´t let the field empty");
                     continue;
                 }
-
                 if (pass.length() < 8 || pass.length() > 20) {
-                    JOptionPane.showMessageDialog(null, "You password can´t have less than 20 characters and more than 20");
+                    JOptionPane.showMessageDialog(null, "You password can´t have less than 8 characters and more than 20");
                     continue;
                 }
 
@@ -77,20 +76,30 @@ public class UserManager {
             //Save in the list
             userList.add(newUser);
 
-            JOptionPane.showMessageDialog(null, "!User " + name + " has been registered successfully¡");
+            JOptionPane.showMessageDialog(null, "User " + name + " has been registered successfully");
 
             idIterator++;
         }
 
         public User handleLogin(){
-        String loginName = JOptionPane.showInputDialog("Enter your User Name");
-        String loginPass = JOptionPane.showInputDialog("Enter your Password");
-        if (loginName == null || loginPass == null)return null;
-
+            String loginName = "";
+        while(true){
+            loginName = JOptionPane.showInputDialog("Enter your User Name");
+            if(loginName == null){ return null;}
+            if(loginName.trim().isEmpty()){JOptionPane.showMessageDialog(null, "Don´t let the field empty"); continue;}
+            break;
+        }
+        String loginPass = "";
+            while(true){
+                loginPass = JOptionPane.showInputDialog("Enter your Password");
+                if(loginPass == null)return null;
+                if(loginPass.trim().isEmpty()){JOptionPane.showMessageDialog(null, "Don´t let the field empty"); continue;}
+                break;
+            }
         //Search the user with a for and a condition
         for(User u : userList){
             if(u.getUserName().equals(loginName) && u.getPassword().equals(loginPass)){
-                JOptionPane.showMessageDialog(null, "¡Welcome back " + u.getUserName() + "!");
+                JOptionPane.showMessageDialog(null, "Welcome back " + u.getUserName());
                 actualUser = u;
                 return u;
             }

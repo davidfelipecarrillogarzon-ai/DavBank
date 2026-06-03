@@ -1,11 +1,11 @@
 import javax.swing.*;
 
-public class functionMenu {
+public class FunctionMenu {
 
     TransactionSystem TSystem = new TransactionSystem();
     Security security = new Security();
 
-    public int selectedOptionFuncitonMenu() {
+    public int selectedOptionFunctionMenu() {
         String[] buttonsFunctionMenu = {"View Account Statement", "Perform A Movement", "transaction History", "Security", "Close Session"};
         int selectedOptionFunctionMenu = JOptionPane.showOptionDialog(null, "HEllO What are you going to do now", "DavBank", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, buttonsFunctionMenu, buttonsFunctionMenu[0]);
 
@@ -14,7 +14,7 @@ public class functionMenu {
 
     public void functionMenu(User loggedUser) {
         while (true) {
-            int selectedOption = selectedOptionFuncitonMenu();
+            int selectedOption = selectedOptionFunctionMenu();
             switch (selectedOption) {
                 case -1, 4:
                     return;
