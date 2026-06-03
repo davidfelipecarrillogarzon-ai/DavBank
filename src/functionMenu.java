@@ -22,6 +22,10 @@ public class functionMenu {
                     break;
                 case 1:
                     performMovement(loggedUser);
+                    break;
+                case 2:
+                    viewTransactionHistory(loggedUser);
+                    break;
             }
         }
     }
@@ -103,5 +107,21 @@ public class functionMenu {
         } else if (selectedOptionMovements == 1) {
             withdrawMenu(loggedUser);
         }else{return;}
+    }
+
+    public void viewTransactionHistory(User loggedUser){
+        java.util.ArrayList<TransactionHistory> history = loggedUser.getTransactionHistory();
+
+        if(history.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No transaction found yet.", "DavBank - History", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        StringBuilder report = new StringBuilder("---Transaction History ---\n\n");
+
+        for(TransactionHistory tx : history){
+            report.append(tx.getDetails()).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, report.toString(), "DavBank - History", JOptionPane.INFORMATION_MESSAGE);
     }
 }
