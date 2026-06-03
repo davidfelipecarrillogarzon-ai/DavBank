@@ -3,6 +3,7 @@ import javax.swing.*;
 public class functionMenu {
 
     TransactionSystem TSystem = new TransactionSystem();
+    Security security = new Security();
 
     public int selectedOptionFuncitonMenu() {
         String[] buttonsFunctionMenu = {"View Account Statement", "Perform A Movement", "transaction History", "Security", "Close Session"};
@@ -25,6 +26,9 @@ public class functionMenu {
                     break;
                 case 2:
                     viewTransactionHistory(loggedUser);
+                    break;
+                case 3:
+                    security.changePassword(loggedUser);
                     break;
             }
         }

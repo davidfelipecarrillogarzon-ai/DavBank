@@ -31,6 +31,10 @@ public class User {
                 return transactionHistory;
         }
 
+        public void setPassword(String newPassword){
+                this.password = newPassword;
+        }
+
 
         public void addBalance(double amount){
                 if(amount >0){
