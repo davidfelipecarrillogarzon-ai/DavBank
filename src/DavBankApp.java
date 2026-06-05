@@ -1,11 +1,20 @@
 import javax.swing.*;
+import java.awt.*;
 
-public class DavBankApp {
+public class DavBankApp extends JFrame{
+    public DavBankApp(){
+        this.setTitle("DavBank");
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.getContentPane().setBackground(Color.DARK_GRAY);
+        this.setVisible(true);
+    }
     private static UserManager userManager = new UserManager();
     public static FunctionMenu functionMenu= new FunctionMenu();
     public static void main(String[] args) {
+        DavBankApp dav = new DavBankApp();
         while (true) {
-            entryMenu();
+            dav.entryMenu();
         }
     }
     public static void entryMenu(){
