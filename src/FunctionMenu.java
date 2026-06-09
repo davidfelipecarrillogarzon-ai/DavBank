@@ -1,13 +1,15 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class FunctionMenu {
 
     TransactionSystem TSystem = new TransactionSystem();
     Security security = new Security();
+    SendMoney sMoney = new SendMoney();
 
     public int selectedOptionFunctionMenu() {
-        String[] buttonsFunctionMenu = {"View Account Statement", "Perform A Movement", "transaction History", "Security", "Close Session"};
-        int selectedOptionFunctionMenu = JOptionPane.showOptionDialog(null, "HEllO What are you going to do now", "DavBank", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, buttonsFunctionMenu, buttonsFunctionMenu[0]);
+        String[] buttonsFunctionMenu = {"View Account Statement", "Perform A Movement", "Send money","Transaction History", "Security", "Close Session"};
+        int selectedOptionFunctionMenu = JOptionPane.showOptionDialog(null, "What are you going to do now", "DavBank", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, buttonsFunctionMenu, buttonsFunctionMenu[0]);
 
         return selectedOptionFunctionMenu;
     }
@@ -16,7 +18,7 @@ public class FunctionMenu {
         while (true) {
             int selectedOption = selectedOptionFunctionMenu();
             switch (selectedOption) {
-                case -1, 4:
+                case -1, 5:
                     return;
                 case 0:
                     viewAccountStatement(loggedUser);
@@ -25,9 +27,17 @@ public class FunctionMenu {
                     performMovement(loggedUser);
                     break;
                 case 2:
-                    viewTransactionHistory(loggedUser);
+                    String cardNumberToSend = JOptionPane.showInputDialog("Write the card number of the person you want to send the money: ");
+                    if(cardNumberToSend == null){continue;}
+                    if(cardNumberToSend.isEmpty()){
+                            continue;
+                        }
+                    sMoney.sendMoney(cardNumberToSend, loggedUser);
                     break;
                 case 3:
+                    viewTransactionHistory(loggedUser);
+                    break;
+                case 4:
                     security.changePassword(loggedUser);
                     break;
             }
@@ -117,7 +127,7 @@ public class FunctionMenu {
         java.util.ArrayList<TransactionHistory> history = loggedUser.getTransactionHistory();
 
         if(history.isEmpty()){
-            JOptionPane.showMessageDialog(null, "No transaction found yet.", "DavBank - History", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No transaction found yet", "DavBank - History", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 

@@ -5,6 +5,9 @@ import java.util.List;
 public class UserManager {
     public User actualUser;
     private static ArrayList<User> userList = new ArrayList<>();
+    public ArrayList<User> getUserArrayList(){
+        return userList;
+    }
     public List<User> list(){return userList;}
 
 
