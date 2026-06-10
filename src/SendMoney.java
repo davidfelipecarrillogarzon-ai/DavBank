@@ -74,6 +74,7 @@ public class SendMoney {
                 JOptionPane.showMessageDialog(null, "Unknown Error Try Again");
                 System.out.println("ERROR: " + e);
             }
+
             if(amount > loggedUser.getBalance()){
                 return -2;
             }

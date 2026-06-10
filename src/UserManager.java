@@ -63,7 +63,7 @@ public class UserManager {
                     continue;
                 }
 
-                if (passTrans.length() > 5 || passTrans.length() < 4) {
+                if (passTrans.length() != 4) {
                     JOptionPane.showMessageDialog(null, "Only 4 Numbers");
                     continue;
                 }
