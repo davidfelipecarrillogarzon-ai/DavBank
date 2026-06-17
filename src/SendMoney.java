@@ -28,11 +28,11 @@ public class SendMoney {
                         break;
                     }
                     u.addBalance(amount);
-                    TransactionHistory THistory = new TransactionHistory("Received of " + loggedUser.getUserName() + " | " + amount + "$", amount);
+                    TransactionHistory THistory = new TransactionHistory("Received of " + loggedUser.getUserName() + " | " , amount);
                     u.addTransaction(THistory);
 
                     loggedUser.subtractBalance(amount);
-                    THistory = new TransactionHistory("Sent to " + u.getUserName() + " | " + " -$", amount);
+                    THistory = new TransactionHistory("Sent to " + u.getUserName() + " | ", amount);
                     loggedUser.addTransaction(THistory);
                 }
                 return;

@@ -15,6 +15,6 @@ public class TransactionHistory {
     public String getDetails(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        return "[" + timestamp.format(formatter) + "] " + type + ": $" + amount;
+        return "|" + timestamp.format(formatter) + "| " + type + ": " + amount + "$";
     }
 }
