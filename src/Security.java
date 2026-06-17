@@ -38,6 +38,7 @@ public class Security {
                     }
                     if(newPassword.equals(loggedUser.getPassword())){
                         JOptionPane.showMessageDialog(null, "Don't change your password to the same one you already have");
+                        continue;
                     }
 
                     if (newPassword.length() < 8 || newPassword.length() > 20) {
