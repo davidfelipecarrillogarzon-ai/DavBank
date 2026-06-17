@@ -10,7 +10,6 @@ public class SendMoney {
 
     String cardNumberToSend;
 
-
     public void sendMoney(String cardNumber, User loggedUser) {
         if(cardNumber == null){return;}
         for (User u : userToSend.getUserArrayList()) {
@@ -72,7 +71,7 @@ public class SendMoney {
             try{
                 amount = Double.parseDouble(amountstr);
             }catch(NullPointerException e){
-                JOptionPane.showInputDialog("Just use numbers");
+                JOptionPane.showMessageDialog(null, "Just use numbers");
             }catch (Exception e){
                 JOptionPane.showMessageDialog(null, "Unknown Error Try Again");
                 System.out.println("ERROR: " + e);
