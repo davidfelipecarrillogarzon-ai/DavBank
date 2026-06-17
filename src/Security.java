@@ -27,6 +27,9 @@ public class Security {
                         JOptionPane.showMessageDialog(null, "Don´t let the field empty");
                         continue;
                     }
+                    if(newPassword.equals(loggedUser.getPassword())){
+                        JOptionPane.showMessageDialog(null, "Don't change your password to the same one you already have");
+                    }
 
                     if (newPassword.length() < 8 || newPassword.length() > 20) {
                         JOptionPane.showMessageDialog(null, "You password can´t have less than 8 characters and more than 20");
