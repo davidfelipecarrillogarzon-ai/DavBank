@@ -9,7 +9,16 @@ public class Security {
                 return;
             case 0:
                 int attempts = 3;
-                String password = JOptionPane.showInputDialog("Write your password to change it");
+                String password = "";
+                while(true){
+                    password = JOptionPane.showInputDialog("Write your password to change it");
+                    if(password == null){return;}
+                    if(password.trim().isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Don´t let the field empty");
+                        continue;
+                    }
+                    break;
+                }
                 while(!password.equals(loggedUser.getPassword())){
                 attempts--;
                 if (attempts == 0) return;
