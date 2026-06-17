@@ -2,8 +2,11 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class SendMoney {
-    UserManager userToSend = new UserManager();
+    UserManager userToSend;
 
+    public SendMoney(UserManager userManager){
+        this.userToSend = userManager;
+    }
 
     String cardNumberToSend;
 

@@ -10,7 +10,7 @@ public class DavBankApp extends JFrame{
         this.setVisible(true);
     }
     private static UserManager userManager = new UserManager();
-    public static FunctionMenu functionMenu= new FunctionMenu();
+    public static FunctionMenu functionMenu= new FunctionMenu(userManager);
     public static void main(String[] args) {
         DavBankApp dav = new DavBankApp();
         while (true) {

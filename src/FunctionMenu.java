@@ -5,7 +5,11 @@ public class FunctionMenu {
 
     TransactionSystem TSystem = new TransactionSystem();
     Security security = new Security();
-    SendMoney sMoney = new SendMoney();
+    SendMoney sMoney;
+
+    public FunctionMenu(UserManager userManager){
+        this.sMoney = new SendMoney(userManager);
+    }
 
     public int selectedOptionFunctionMenu() {
         String[] buttonsFunctionMenu = {"View Account Statement", "Perform A Movement", "Send money","Transaction History", "Security", "Close Session"};
