@@ -4,11 +4,6 @@ import java.util.List;
 
 public class UserManager {
     public User actualUser;
-    private static ArrayList<User> userList = new ArrayList<>();
-    public ArrayList<User> getUserArrayList(){
-        return userList;
-    }
-    public List<User> list(){return userList;}
 
 
     public void handleRegistration(){
@@ -77,9 +72,6 @@ public class UserManager {
             UserDAO userDAO = new UserDAO();
 
             userDAO.insert(name, pass, card, passTrans, balance);
-
-            //Save in the list
-            userList.add(newUser);
 
             JOptionPane.showMessageDialog(null, "User " + name + " has been registered successfully");
 
