@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class User {
 
-        private int id;
         private String userName;
         private String password;
         private String cardNumber;
@@ -10,8 +9,7 @@ public class User {
         private double balance;
         private ArrayList<TransactionHistory> transactionHistory;
 
-        public User(int id, String userName, String password, String cardNumber, String transactionPassword, double balance){
-                this.id = id;
+        public User(String userName, String password, String cardNumber, String transactionPassword, double balance){
                 this.userName = userName;
                 this.password = password;
                 this.cardNumber = cardNumber;
@@ -21,7 +19,6 @@ public class User {
         }
 
         //Getters: help extract data from a private object
-        public int getId(){return id;}
         public String getUserName(){return userName;}
         public String getPassword(){return password;}
         public String getCardNumber(){return  cardNumber;}

@@ -11,9 +11,7 @@ public class UserManager {
     public List<User> list(){return userList;}
 
 
-    public static int idIterator = 1;
     public void handleRegistration(){
-            int id = idIterator;
             String name = "";
             while (true) {
                 name = JOptionPane.showInputDialog("Write your complete name");//Name for the card and app
@@ -74,14 +72,17 @@ public class UserManager {
             double balance = 0;
 
             //Create the object
-            User newUser = new User(id, name, pass, card, passTrans, balance);
+            User newUser = new User(name, pass, card, passTrans, balance);
+
+            UserDAO userDAO = new UserDAO();
+
+            userDAO.insert(name, pass, card, passTrans, balance);
 
             //Save in the list
             userList.add(newUser);
 
             JOptionPane.showMessageDialog(null, "User " + name + " has been registered successfully");
 
-            idIterator++;
         }
 
         public User handleLogin(){
