@@ -52,6 +52,24 @@ public class UserDAO {
         return null;
     }
 
+    public void updatePassword(User loggedUser, String newPassword){
+        String userName = loggedUser.getUserName();
+
+        String sql = """
+                UPDATE users
+                SET password = ?
+                WHERE username = ?;
+                """;
+        try(Connection con = DBConnection.obtainConnection();
+            PreparedStatement pstmt = con.prepareStatement(sql)){
+            pstmt.setString(1, newPassword);
+            pstmt.setString(2, userName);
+            pstmt.executeUpdate();
+        }catch (SQLException e){
+            System.err.println("Error trying to update password in data base " + e);
+        }
+    }
+
 
 
 }
