@@ -45,7 +45,8 @@ public class Security {
                         JOptionPane.showMessageDialog(null, "You password can´t have less than 8 characters and more than 20");
                         continue;
                     }
-                    loggedUser.setPassword(newPassword);
+                    UserDAO userDAO = new UserDAO();
+                    userDAO.updatePassword(loggedUser, newPassword);
                     break;
                 }
         }
