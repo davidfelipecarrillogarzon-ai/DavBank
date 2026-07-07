@@ -100,15 +100,15 @@ public class UserManager {
                 if(loginPass.trim().isEmpty()){JOptionPane.showMessageDialog(null, "Don´t let the field empty"); continue;}
                 break;
             }
-        //Search the user with a for and a condition
-        for(User u : userList){
-            if(u.getUserName().equals(loginName) && u.getPassword().equals(loginPass)){
-                JOptionPane.showMessageDialog(null, "Welcome back " + u.getUserName());
-                actualUser = u;
-                return u;
-            }
-            }
-        JOptionPane.showMessageDialog(null, "User or Password incorrect");
-        return null;
+        //Search the user in database
+
+            UserDAO userDAO = new UserDAO();
+             User loggedUser = userDAO.login(loginName, loginPass);
+             if(loggedUser != null){
+                 JOptionPane.showMessageDialog(null, "Welcome back " + loggedUser.getUserName());
+                 return loggedUser;
+             }
+             JOptionPane.showMessageDialog(null, "User does not exist in DavBank database");
+             return null;
         }
     }
