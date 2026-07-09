@@ -5,11 +5,7 @@ public class FunctionMenu {
 
     TransactionSystem TSystem = new TransactionSystem();
     Security security = new Security();
-    SendMoney sMoney;
-
-    public FunctionMenu(UserManager userManager){
-        this.sMoney = new SendMoney(userManager);
-    }
+    SendMoney sMoney = new SendMoney();
 
     public int selectedOptionFunctionMenu() {
         String[] buttonsFunctionMenu = {"View Account Statement", "Perform A Movement", "Send money","Transaction History", "Security", "Close Session"};
@@ -61,6 +57,7 @@ public class FunctionMenu {
             }
         }
     }
+    UserDAO userDAO = new UserDAO();
 
     public void depositMenu(User loggedUser) {
         double moneyDeposit = 0;
@@ -79,6 +76,7 @@ public class FunctionMenu {
                     continue;
                 }
                 JOptionPane.showMessageDialog(null, "Successfully deposited: $" + moneyDeposit);
+                userDAO.addBalance(loggedUser, moneyDeposit);
                 break;
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Enter only numbers");
@@ -109,6 +107,7 @@ public class FunctionMenu {
                 }
                 if(transaction == 2){
                     JOptionPane.showMessageDialog(null, "Successfully withdrawn: $" + moneyWithdraw);
+                    userDAO.subtractMoney(loggedUser, moneyWithdraw);
                     break;
                 }
             } catch (NumberFormatException e) {

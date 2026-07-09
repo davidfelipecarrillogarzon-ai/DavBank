@@ -70,6 +70,64 @@ public class UserDAO {
         }
     }
 
+    public void addBalance(User loggedUser, double amount){
+        String sql = """
+                UPDATE users
+                SET balance = balance + ?
+                WHERE username = ?;
+                """;
+        try(Connection con = DBConnection.obtainConnection();
+            PreparedStatement pstmt = con.prepareStatement(sql)){
+            pstmt.setDouble(1, amount);
+            pstmt.setString(2, loggedUser.getUserName());
+            pstmt.executeUpdate();
+        }catch (SQLException e){
+            System.err.println("Error trying to update balance in data base " + e);
+        }
+    }
+    public void subtractMoney(User loggedUser, double amount){
+        String sql = """
+                UPDATE users
+                SET balance = balance - ?
+                WHERE username = ?;
+                """;
+        try(Connection con = DBConnection.obtainConnection();
+            PreparedStatement pstmt = con.prepareStatement(sql)){
+            pstmt.setDouble(1, amount);
+            pstmt.setString(2, loggedUser.getUserName());
+            pstmt.executeUpdate();
+        }catch (SQLException e){
+            System.err.println("Error trying to update balance in data base " + e);
+        }
+    }
+
+    public User searchUserToSendMoney(String cardNumber, double amountToSend){
+        String sql = """
+                SELECT username
+                FROM users
+                WHERE cardnumber = ?
+                """;
+        try(Connection con = DBConnection.obtainConnection();
+            PreparedStatement pstmt = con.prepareStatement(sql)){
+            pstmt.setString(1, cardNumber);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                if(rs.next()){
+                    return new User(
+                            rs.getString("userName"),
+                            null,
+                            null,
+                            null,
+                            0
+                            );
+                }
+            }
+        }catch (SQLException e){
+            System.err.println("Error searching user: " + e);
+        }
+        return null;
+    }
+
 
 
 }

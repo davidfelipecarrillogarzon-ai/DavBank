@@ -93,7 +93,6 @@ public class UserManager {
                 break;
             }
         //Search the user in database
-
             UserDAO userDAO = new UserDAO();
              User loggedUser = userDAO.login(loginName, loginPass);
              if(loggedUser != null){
